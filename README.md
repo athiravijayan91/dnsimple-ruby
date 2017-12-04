@@ -14,6 +14,7 @@ When you create a new rails project, the default database being set up along wit
 
 steps to setup Postgresql as the database:
 1. Download and install Postgresql in your machine, you can use the link https://www.postgresql.org/download/
+
 2.To create a Rails app configured for Postgres, run this command:
 
 rails new myapp --database=postgresql
