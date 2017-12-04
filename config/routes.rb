@@ -1,15 +1,11 @@
 Rails.application.routes.draw do
 
 
-  # resources :hostings
-  # resources :transfers
+ 
   resources :templates,only: [:index]
   resources :contacts,only: [:index]
   resources :manage_domains,only: [:index]
-  # resources :settings
-  # resources :dnssecs
-  # resources :email_forwardings
-  # resources :registers
+ 
 	resources :domains ,only: [:index,:new,:show] do
 	  resources :transfers ,:controller => 'domains/transfers',only: [:index,:new]
 	  resources :hostings ,:controller => 'domains/hostings',only: [:index,:show,:create]
@@ -22,9 +18,7 @@ Rails.application.routes.draw do
       resources :settings, :controller => 'domains/settings', only: [:show]
 	  post "settings", { to: "domains/settings#destroy" }
 		get "settings", { to: "domains/settings#show" }              
-		#resources :ssl_certificates
-		# resources :email
-		# resources :dns_sec
+		
 	end
 	 get "domains/registers", { to: "registers#new" }
 	 get "domains/:domain_id/dns", { to: "dns#index" }
@@ -36,11 +30,7 @@ Rails.application.routes.draw do
 	 get "domains/:id", { to: "domains#show" }
 	                                   
 
-	# resources :registers
-    # resources :options, {only: %i[new]}
-	# resources :transfer_domains,:only => [:index, :show]
-	# resources :servicedomains,:only => [:index, :show]
-	# resources :records
+
 	
 	
 
