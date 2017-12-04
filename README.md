@@ -10,6 +10,8 @@ Specifications:
 
 This is a project on Rails framework, replicating 'dnsimple.com' site which is used for registering and managing domains. I am using Ruby version 2.2.6 and Rails version 5.1.4. 
 When you create a new rails project, the default database being set up along with it is SQLite3.But I set up Postgresql as the data base for this project
+
+
 steps to setup Postgresql as the database:
 1. Download and install Postgresql in your machine, you can use the link https://www.postgresql.org/download/
 2.To create a Rails app configured for Postgres, run this command:
