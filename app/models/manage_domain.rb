@@ -1,0 +1,2 @@
+class ManageDomain < ApplicationRecord
+end

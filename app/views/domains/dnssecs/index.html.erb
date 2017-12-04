@@ -1,0 +1,124 @@
+<div>
+   <div class="subnav">
+    <div class="container" id="container">
+      <ul class="subnav-list" id="slist">
+
+        <li title="Manage your domains" rel="tooltip" class="active">
+          <%=link_to "Domains" , manage_domains_path %>
+
+        </li>
+        <li title="Manage your contacts" rel="tooltip">
+          <%=link_to "Contacts" , contacts_path %>
+
+        </li>
+        <li title="Manage custom DNS templates" rel="tooltip"  ><%=link_to "Templates" , templates_path %>
+          
+        </li>
+
+      </ul>
+    </div>
+  </div>
+   <div id="flexc">
+      <div id="container">
+         <div>
+            <h4 class="title" id='ttle'> <%= link_to "#{@domain.domain_name}" %></h4>
+         </div>
+         <div class="row">
+            <div class="col-sm-3" id='sm'>
+               <div class="sidebar-nav">
+                  <div class="navbar navbar-default" id="nb" role="navigation">
+                     <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                           <span class="sr-only">Toggle navigation</span>
+
+                        </button>
+                        <span class="visible-xs navbar-brand">Sidebar menu</span>
+                     </div>
+                     <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                        <ul class="nav navbar-nav">
+                           <li>
+
+                              <span>
+                        <i class="fa fa-globe"  aria-hidden="true">
+                        </i>
+                      
+                      <%= link_to "Domain" ,domain_path(:id=>"#{@domain.id}")  %>
+                      </span>
+
+                           </li>
+
+                           <li>
+                              <span>
+                      <i class="fa fa-tasks" aria-hidden="true">
+                      </i>
+
+                     <%= link_to "DNS" , :controller => "dns",:action => "index",:domain_id=>"#{@domain.id}"  %><!-- only access it this way  -->
+
+                    </span>
+                           </li>
+                           <li>
+
+                              <span>
+                      <i class="fa fa-lock" aria-hidden="true"></i>
+                      <%= link_to "SSL Certificates" , :controller => "ssl_certificates",:action => "index",:domain_id=>"#{@domain.id}"  %>
+                    </span>
+
+                           </li>
+                           <li>
+
+                              <span>
+                      <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                      <%= link_to "Email forwarding" , :controller => "email_forwardings",:action => "index",:domain_id=>"#{@domain.id}"  %>
+                    </span>
+
+                           </li>
+                           <li class="active">
+                             <div id="sidet" class='sideset'>
+                    <a class="page-nav-item icon-domain page-nav-active" >
+                           
+                      <i class="fa fa-cubes" aria-hidden="true"></i>
+                      <%= link_to "DNSSEC" , :controller => "dnssecs",:action => "index",:domain_id=>"#{@domain.id}"  %>
+                    
+                              </a>
+                              </div>
+
+                           </li>
+                           <li>
+                              <span>
+                      <i class="fa fa-cog" aria-hidden="true"></i>
+                       <%= link_to "Settings" , :controller => "domains/settings",:action => "show",:domain_id=>"#{@domain.id}"  %>
+                    </span>
+                           </li>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div>
+
+
+         <section class="page-content">
+
+
+            <ul class="card-list">
+
+               <li class="card-list-item">
+                  <header class="card-header">
+                     <h1 class="card-title">DNSSEC Configuration</h1>
+                  </header>
+                  <ul class="card-action-list">
+                     <li><a class="card-action-link" href="/a/76691/domains/athira.cloud/dnssec_configuration/new">Configure DNSSEC</a>
+                     </li>
+                  </ul>
+               </li>
+
+            </ul>
+
+         </section>
+
+
+      </div>
+</div>

@@ -1,0 +1,74 @@
+ 
+<div>
+<div class="subnav">
+      <div class="container" id="container">
+      <ul class="subnav-list" id="slist">
+
+        <li title="Manage your domains" rel="tooltip" class="active">
+          <%=link_to "Domains" , manage_domains_path ,id:"black"%>
+
+        </li>
+        <li title="Manage your contacts" rel="tooltip">
+          <%=link_to "Contacts" , contacts_path,id:"grey" %>
+
+        </li>
+        <li title="Manage custom DNS templates" rel="tooltip"  ><%=link_to "Templates" , templates_path ,id:"grey" %>
+          
+        </li>
+
+      </ul>
+    </div>
+</div>
+  <div class="adddomain">
+
+    <p>Add domain</p>
+
+  </div>
+
+
+  <div class='aflex1'>
+
+    <div class='options-block'>
+      <i class="fa fa-usd fa-2x" id="fa1" aria-hidden="true"></i>
+      <p class="p11">Register a domain</p>
+      <p class="p22">I want to register a new domain</p>
+
+
+      <div class="registerdomainbtn">
+        
+        <%= button_to 'Register a domain' , domain_registers_path(:domain_id=>"1"), method: :get ,:id=>"rd"%>
+      </div>
+
+    </div>
+
+
+    <div class='options-block'>
+
+      <i class="fa fa-arrow-right fa-2x" id="fa1" aria-hidden="true"></i>
+      <p class="p11">Transfer my domain</p>
+      <p class="p23">I want to transfer a domain taht I own to DNSimple</p>
+
+
+      <div class="transferdomainbtn">
+
+        <%=button_to 'Transfer a domain', domain_transfers_path(:domain_id=>"1"), method: :get , :id=>"rd"%>
+      </div>
+
+    </div>
+
+
+    <div class='options-block'>
+
+      <i class="fa fa-bars fa-2x" id="fa1" aria-hidden="true"></i>
+      <p class="p11">Use domain services</p>
+      <p class="p23">I want to use DNSimple's services while keeping my domain at my current registrar</p>
+
+      <div class="servicedomainbtn">
+        <%=button_to 'Use domain services' ,domain_hostings_path(:domain_id=>"1"), method: :get,:id=>"rd"%>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>

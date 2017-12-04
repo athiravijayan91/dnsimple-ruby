@@ -1,0 +1,139 @@
+<div>
+  <div class="index container">
+    <div class="flexclass">
+      <h1 class="dashbrd">Dashboard</h1>
+      <div class="rl">
+        <div class="col-md-8">
+          <div class="dashboard-card">
+            <header>
+              <h3 class='head'><strong><%=( @domains.count+ @hostings.count) %></strong> <div class="domn"><strong >Domains</strong></div>
+
+              <div class="btn">
+
+              <%=button_to 'Add domain', { :action=> "new", :controller => "domains"}, method: :get , :id=>"add"%>
+
+
+              </div>
+            </h3>
+
+            </header>
+            <div class="card-separator"></div>
+
+
+            <div class="dashboard">
+
+
+              <% @domains.each do |domain|%>
+
+                
+                <h4 class='flexmix'><div class="r">R</div>
+                <div class="dname" id="name"><%= link_to "#{domain.domain_name}" , :controller => "domains", :action => "show",:id => domain.id   %>
+                  
+                  
+                </div>
+
+                <div class="pull-right1">
+                <div class="bar">
+                  <span class="span">
+                    <%=button_to "≡",{ :action=> "index", :controller => "domain_records",:domain_id => domain.id },method: :get  ,:class=>"i"%>
+                      
+                    
+                    <div class="star">
+                      <i class="fa fa-star-o" aria-hidden="true"></i>
+                    </div>
+                  </span>
+                </div>
+                
+        
+               </div>
+
+              </h4>
+
+
+                <%end%>
+
+                
+
+            </div>
+
+
+
+
+            <div class="dashboard">
+
+
+              <% @hostings.each do |hosting|%>
+                
+
+              
+
+                
+                <h4 class='flexmix'><div class="r">H</div>
+                <div class="dname" id="name"><%= link_to "#{hosting.domain_name}"  %>
+                  
+                  
+                </div>
+                 <div class="pull-right1">
+                <div class="bar">
+                  <span class="span">
+                    <%=button_to "≡",{ :action=> "index", :controller => "domain_records",:domain_id => hosting.id },method: :get  ,:class=>"i"%>
+                      
+                    
+                    <div class="star">
+                      <i class="fa fa-star-o" aria-hidden="true"></i>
+                    </div>
+                  </span>
+                </div>
+                
+        
+               </div>
+
+               
+              </h4>
+
+
+                <%end%>
+
+                
+
+            </div>
+
+           </div>
+
+        </div>
+        <div class="col-md-4">
+          <div class="dashboard-card text-center">
+            <p><strong>Want to shave $5 off your next invoice?</strong>
+            </p>
+            <%= image_tag ("trusty-gift.png" ),:class => "img" %>
+            <p class="l-vert-island text-muted">Refer a friend and get credits for your subscription.</p>
+          </div>
+          <div class="dashboard-card">
+      <header>
+        <h3><strong>1</strong> <div class="domn"><strong>Accounts</strong></div></h3>
+        <a class="btn btn-sm btn-default btn-dashboard-header pull-right" href="/accounts/new" id="nb">Add account</a>
+      </header>
+      <div class="card-separator"></div>
+        <div class="account">
+            <a href="/a/76691/account">
+              <span class="dashboard-account-name">pkathiravijayan <span class="plan-symbol-professional pull-right" id="pro">Professional</span></span>
+             
+         </a>          <div class="dashboard-hr"></div>
+        </div>
+    </div>
+          <div class="dashboard-card">
+            <h3><strong class="js-dashboard-alert-count">0</strong><div class="domn"> <strong>Alerts</strong></div></h3>
+            <div class="card-separator"></div>
+            <div class="js-raa-alerts" data-path="/dashboard/registrar_accreditation_agreement_alerts"><span class="js-raa-alert-count is-hidden"></span>
+            </div>
+            <span class="text-subtle js-dashboard-alert-loading is-hidden"></span>
+            <span class="text-subtle js-dashboard-alert-none">No alerts at this time.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

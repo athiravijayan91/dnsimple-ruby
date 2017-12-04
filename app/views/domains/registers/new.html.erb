@@ -1,0 +1,85 @@
+
+  <div>
+     <div class="subnav">
+    <div class="container" id="container">
+      <ul class="subnav-list" id="slist">
+
+        <li title="Manage your domains" rel="tooltip" class="active">
+          <%=link_to "Domains" , manage_domains_path ,id:"black"%>
+
+        </li>
+        <li title="Manage your contacts" rel="tooltip">
+          <%=link_to "Contacts" , contacts_path ,id:"grey"%>
+
+        </li>
+        <li title="Manage custom DNS templates" rel="tooltip"  ><%=link_to "Templates" , templates_path,id:"grey" %>
+          
+        </li>
+
+      </ul>
+    </div>
+  </div>
+
+    </div>
+    <div class="form" id="rform">
+
+      <div class="display">
+        <h2 class="reg">Register</h2>
+        <p class="disp">
+          <%= @domain.domain_name %>
+        </p>
+      </div>
+
+
+      <label for="domain_registrant_id">Registrant</label>
+      <br>
+      <select class="form">
+        <option>Select a Contact</option>
+      </select>
+
+      <fieldset>
+        <div class="checkbox form-group">
+          <p><strong>WHOIS Privacy protection</strong> <span class="text-subtle">Recommended</span>
+          </p>
+          <label for="privacy">
+            <input type="checkbox" name="privacy" id="privacy" value="1"> Hide my contact information in WHOIS for an additional $2.00/year.
+          </label>
+        </div>
+        <div class="checkbox form-group">
+          <p><strong>Domain auto renewal</strong> <span class="text-subtle">Recommended</span>
+          </p>
+          <label class="checkbox" for="auto_renew">
+            <input type="checkbox" name="auto_renew" id="auto_renew" value="1" checked="checked"> Automatically renew this domain each year
+          </label>
+        </div>
+      </fieldset>
+      <form>
+        <!-- <input class="dname" id="domainNameInput" type="text" name="domain_name" placeholder="example.com" value="<%= @domain.domain_name %>"> -->
+
+        <div class="l-vert-island">
+          <p>By clicking <em>Register Domain</em> you agree to pay <strong>$20.00</strong> for a 1 year registration. <strong>Your credit card will be charged immediately.</strong>
+          </p>
+          <p class="text-subtle">Your domain will be registered through Enom, an ICANN accredited domain registrar. Registering a domain you agree to the <a href="/registration-agreement?account_id=76691">Domain Registration Agreement</a>.</p>
+        </div>
+
+        
+      </form>
+
+           <!-- <trying new form> -->
+
+          <div>
+            <%=form_for(@domain, :url=> url_for(:controller => 'domains/registers', :action => 'create'), html: { method: :post }) do |form| %>
+                <%= form.hidden_field :domain_name %>
+              <div class="b1b2" id="b1b2">
+               <%=form.submit "Register #{@domain.domain_name}", :class=> "regd"%>
+              
+            <% end %>
+            <div class="form-actions">
+          <%= button_to 'Cancel' ,manage_domains_path, method: :get , :id=>"cancl"%>
+         
+          </div>
+          
+        </div>
+          </div>
+
+  </div>

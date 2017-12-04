@@ -1,0 +1,226 @@
+<div>
+  <div class="subnav">
+    <div class="container" id="container">
+      <ul class="subnav-list">
+
+        <li title="Manage your domains" rel="tooltip" class="active">
+          <%=link_to "Domains" , :controller=> "manage_domains", :action => "index" %>
+
+        </li>
+        <li title="Manage your contacts" rel="tooltip">
+          <%=link_to "Contacts" , :controller=> "contacts", :action => "index" %>
+
+        </li>
+        <li title="Manage custom DNS templates" rel="tooltip"><%=link_to "Templates" , :controller=> "templates", :action => "index" %>
+          
+        </li>
+
+      </ul>
+    </div>
+  </div>
+
+  <div class="container container-main">
+
+    <div class="query-bar">
+      <a bootstrap_type="primary" class="btn btn-primary" href="/a/76691/domains/new">Add Domain</a>
+      <form id="domain-listing-form" class="query-form form-inline" action="/a/76691/domains" accept-charset="UTF-8" method="post">
+        <input name="utf8" type="hidden" value="✓">
+        <input type="hidden" name="sort" id="domain-sort">
+        <input type="hidden" name="direction" id="domain-direction" value="asc">
+        <input type="hidden" name="page" id="page">
+      </form>
+    </div>
+    <div class="l-vert-island">
+      <div id="domain-listing">
+        <p>Showing<%=( @domains.count+ @hostings.count)  %>Domains</p>
+        <table id="domains-table" class="model-table">
+          <thead>
+            <tr>
+              <th class="column-select">&nbsp;</th>
+              <th class="column-name column-sortable sorting-asc" data-sortable="name"><span>Name</span>
+              </th>
+              <th class="column-details"></th>
+              <th class="column-expiration column-sortable " data-sortable="expiration"><span>Renew by</span>
+              </th>
+              <th class="column-actions"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="">
+              <td class="column-select text-centered">
+                
+              </td>
+              <td class="column-name">
+                <% @domains.each do |domain|%>
+
+                  <h4 class='flexmix'><input type="checkbox" class="selected_domain js-selected-domain" value="athira.cloud" data-state="registered" data-labels-path="/a/76691/domains/athira.cloud/labels"
+                data-labels="" id='check'><div class="r">R</div>
+                <div class="dname"><%= link_to "#{domain.domain_name}" , :controller => "domains", :action => "show",:id => domain.id   %>
+                  
+                  
+                </div>
+                <div class="pull-right">
+                <div class="bar">
+                  <span class="span">
+                    
+                   
+                  </span>
+                </div>
+                
+        
+               </div>
+              </h4>
+
+                  <%end%>
+
+              </td>
+              <td class="column-details text-right">
+                <span class="js-raa-indicator icon-exclamation text-danger is-hidden" data-path="/a/76691/domains/athira.cloud/registrar_accreditation_agreements" rel="tooltip"
+                title="Domain requires ICANN validation to avoid suspension"></span>
+              </td>
+
+              <td class="column-expiration">
+                Nov 02, 2018
+              </td>
+
+              <td class="column-actions text-right">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-default icon-align-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-right domain-kebap-menu">
+                    <li>
+                      <a class="icon-dns" href="/a/76691/domains/athira.cloud/records">
+            View DNS records
+            <span class="text-subtle pull-right">8</span>
+             </a> </li>
+                    <li>
+                      <a class="icon-lock" href="/a/76691/domains/athira.cloud/certificates">
+              View SSL Certificates
+              <span class="text-subtle pull-right">0</span>
+              </a> </li>
+                    <li><a class="icon-one-click" href="/a/76691/domains/athira.cloud/applied_services">Apply One-click Services</a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+
+                    <li><a class="icon-privacy" href="/a/76691/domains/athira.cloud/whois_privacy?return_to=%2Fa%2F76691%2Fdomains">Enable WHOIS privacy</a>
+                    </li>
+
+                    <li><a class="icon-renew" rel="nofollow" data-method="post" href="/a/76691/domains/athira.cloud/auto_renewal?return_to=%2Fa%2F76691%2Fdomains">Renew this domain automatically</a>
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+
+            <tr class="">
+              <td class="column-select text-centered">
+                <input type="checkbox" class="selected_domain js-selected-domain" value="athira.cloud" data-state="registered" data-labels-path="/a/76691/domains/athira.cloud/labels"
+                data-labels="">
+              </td>
+              <td class="column-name">
+                <% @hostings.each do |hosting|%>
+
+                  <h4 class='flexmix'><div class="r">h</div>
+                <div class="dname"><%= link_to "#{hosting.domain_name}" %>
+                  
+                  
+                </div>
+                <div class="pull-right">
+                <div class="bar">
+                  <span class="span">
+                    
+                   
+                  </span>
+                </div>
+                
+        
+               </div>
+              </h4>
+
+                  <%end%>
+
+              </td>
+              <td class="column-details text-right">
+                <span class="js-raa-indicator icon-exclamation text-danger is-hidden" data-path="/a/76691/domains/athira.cloud/registrar_accreditation_agreements" rel="tooltip"
+                title="Domain requires ICANN validation to avoid suspension"></span>
+              </td>
+
+              <td class="column-expiration">
+                Nov 02, 2018
+              </td>
+
+              <td class="column-actions text-right">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-default icon-align-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-right domain-kebap-menu">
+                    <li>
+                      <a class="icon-dns" href="/a/76691/domains/athira.cloud/records">
+            View DNS records
+            <span class="text-subtle pull-right">8</span>
+             </a> </li>
+                    <li>
+                      <a class="icon-lock" href="/a/76691/domains/athira.cloud/certificates">
+              View SSL Certificates
+              <span class="text-subtle pull-right">0</span>
+              </a> </li>
+                    <li><a class="icon-one-click" href="/a/76691/domains/athira.cloud/applied_services">Apply One-click Services</a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+
+                    <li><a class="icon-privacy" href="/a/76691/domains/athira.cloud/whois_privacy?return_to=%2Fa%2F76691%2Fdomains">Enable WHOIS privacy</a>
+                    </li>
+
+                    <li><a class="icon-renew" rel="nofollow" data-method="post" href="/a/76691/domains/athira.cloud/auto_renewal?return_to=%2Fa%2F76691%2Fdomains">Renew this domain automatically</a>
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3">
+                <div>
+                  <button class="js-domain-list-label-btn btn btn-default">Label domains</button>
+                </div>
+
+                <div id="domain-list-labels-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="domain-list-labels-modal">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+                        </button>
+                        <h4 class="modal-title">Label domains</h4>
+                      </div>
+                      <div class="modal-body">
+                        <p class="js-domains-to-label-text"></p>
+                        <label>Labels</label>
+                        <input class="js-domain-labels-input form-control">
+                        <span class="help-block">You can enter multiple labels, if you separate them by commas</span>
+                      </div>
+                      <div class="modal-footer">
+                        <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                        <button class="btn btn-primary js-domain-list-labels-modal-btn">Label domains</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <div class="text-centered">
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,42 @@
+// Place all the styles related to the manage_domains controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.ttl{
+	color:black;
+}
+
+.model-table {
+    margin-bottom: 2.4rem;
+    background: #fff;
+    border: 1px solid #f1f1f1;
+    border-radius: 3px;
+}
+@media (min-width: 40em)
+{
+.model-table tr, .model-table td {
+    word-break: normal;
+    white-space: nowrap;
+}
+}
+
+.model-table tbody tr:nth-child(odd) {
+    background-color: #f1f1f1;
+}
+@media (min-width: 40em)
+{
+.model-table tr, .model-table td {
+    word-break: normal;
+    white-space: nowrap;
+}
+}
+#check{
+	margin-top:20px;
+}

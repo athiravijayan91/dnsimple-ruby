@@ -1,0 +1,195 @@
+
+<%=flash[:error] %>
+<div>
+  <div class="subnav">
+    <div class="container" id="container">
+      <ul class="subnav-list" id="slist">
+
+        <li title="Manage your domains" rel="tooltip" class="active">
+          <%=link_to "Domains" , manage_domains_path %>
+
+        </li>
+        <li title="Manage your contacts" rel="tooltip">
+          <%=link_to "Contacts" , contacts_path %>
+
+        </li>
+        <li title="Manage custom DNS templates" rel="tooltip"  ><%=link_to "Templates" , templates_path %>
+          
+        </li>
+
+      </ul>
+    </div>
+  </div>
+ <div id="flexc">
+
+
+   <div id="container">
+      <div>
+         <h4 class="title" id="tl"> <%= link_to "#{@domain.domain_name}" %></h4>
+      </div>
+      <div class="row">
+         <div class="col-sm-3" id="sm">
+            <div class="sidebar-nav">
+               <div class="navbar navbar-default" id="nb" role="navigation">
+                  <div class="navbar-header">
+                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+
+                     </button>
+                     <span class="visible-xs navbar-brand">Sidebar menu</span>
+                  </div>
+                  <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                     <ul class="nav navbar-nav">
+                       <li class="active"><span><i class="fa fa-globe" aria-hidden="true"></i>
+                    <%= link_to "Domain" ,domain_path(:id=>"#{@domain.id}")  %>
+                  </span>
+                  </li>
+
+                        <li>
+                           <span>
+                      <i class="fa fa-tasks" aria-hidden="true">
+                      </i>
+
+                     <%= link_to "DNS" , :controller => "dns",:action => "index",:domain_id=>"#{@domain.id}"  %><!-- only access it this way  -->
+
+                    </span>
+                        </li>
+                        <li>
+
+                           <span>
+                      <i class="fa fa-lock" aria-hidden="true"></i>
+                      <%= link_to "SSL Certificates" , :controller => "ssl_certificates",:action => "index",:domain_id=>"#{@domain.id}"  %>
+                    </span>
+
+                        </li>
+                        <li>
+
+                           <span>
+                      <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                      <%= link_to "Email forwarding" , :controller => "email_forwardings",:action => "index",:domain_id=>"#{@domain.id}"  %>
+                    </span>
+
+                        </li>
+                        <li>
+
+                           <span>
+                      <i class="fa fa-cubes" aria-hidden="true"></i>
+                      <%= link_to "DNSSEC" , :controller => "dnssecs",:action => "index",:domain_id=>"#{@domain.id}"  %>
+                  
+                              </span>
+
+                        </li>
+                        <li class="active">
+                            <div id="sidet" class='sideset'> 
+                    <a class="page-nav-item icon-domain page-nav-active" >
+                              
+                      <i class="fa fa-cog" aria-hidden="true"></i>
+                       <%= link_to "Settings" , :controller => "domains/settings",:action => "show",:domain_id=>"#{@domain.id}"  %>
+                    
+                           </a>
+                           </div>
+                        </li>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div id="div">
+
+
+      <section class="page-content">
+
+
+         <ul class="card-list" id="clist">
+            <li class="card-list-item">
+               <header class="card-header" >
+                  <h1 class="card-title">Share or transfer domain</h1>
+                  <p class="card-subtitle">Share the management or transfer this domain to another DNSimple user</p>
+               </header>
+               <ul class="card-action-list">
+                  <li>
+                     <a class="card-action-link" href="/a/76691/domains/athira.cloud/push/new">Transfer ownership</a>
+                  </li>
+                  <li>
+                     <a class="card-action-add" href="/a/76691/domains/athira.cloud/memberships">Share management</a>
+                  </li>
+               </ul>
+            </li>
+
+            <li class="card-list-item">
+               <header class="card-header">
+                  <h1 class="card-title">Domain API token</h1>
+                  <p class="card-subtitle">Provide access through our API to this domain only.</p>
+                  <p><var>UQp2cw50okZiirKhAUICyus8tKiaypcw</var>
+                  </p>
+               </header>
+               <ul class="card-action-list">
+                  <li>
+                     <a class="btn btn-default icon-refresh" rel="nofollow" data-method="post" href="/a/76691/domains/athira.cloud/token">Reset Domain Token</a>
+                  </li>
+               </ul>
+            </li>
+
+            <li class="card-list-item">
+               <header class="card-header">
+                  <h1 class="card-title">Delete domain</h1>
+                  <p class="card-subtitle">If you delete your domain it will remove all records and your name will no longer resolve if you are using our name servers</p>
+
+                  <%= link_to "Delete domain", "javascript:void(0)", 'data-target': "#myModal", 'data-toggle': "modal" %>
+
+               </header>
+               <ul class="card-action-list">
+                  <li>
+
+                     <!-- <button type="button" class="btn icon-warning btn-warning" data-toggle="modal" data-target="#delete-domain-modal">Delete domain</button> -->
+                  </li>
+                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                     <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                           <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                              </button>
+                              <h4 class="modal-title" id="myModalLabel">Delete Confirmation</h4>
+                           </div>
+
+                            <div class="modal-body">
+                              <%=form_for(@domain, :url=> url_for(:controller => 'domains/settings', :action => 'destroy'), html: { method: :post }) do |form| %>
+                                 <p><strong>Are you sure you want to delete the domain <%="#{@domain.domain_name}" %>? This action cannot be undone.</strong>
+                                 </p>
+                                 <p>Deleting your domain removes all records and stops resolving if you are using our name servers. If this domain is registered with
+                                    us, we won't be able to notify you when the domain is done for renewal.</p>
+                                 <p>
+                                    <label for="domain_name"><strong>Enter the domain name</strong>
+                                       <%="#{@domain.domain_name}" %>
+                                          </span> <strong>below to delete this domain:</strong>
+                                    </label>
+                                    <span class="text-subtle"></p>
+                                      <!--%= form.text_field :domain_id, error: 'Name is mandatory, please specify one' %-->
+                                     <input type="text" name="domain_name_validation" value="" class="form-control js-modal-confirmation-input">
+                            
+                           
+                           <%=form.submit "Delete this Domain"%>
+                           <%= link_to "Cancel", 'data-dismiss': "modal" %>
+                           <% end %>
+                           
+                        </div>
+                       </div>
+                    </div>
+                  </div>
+                </div>
+
+               </ul>
+               </li>
+
+            </ul>
+
+         </section>
+
+    </div>
+ </div>
+</div>
+
+

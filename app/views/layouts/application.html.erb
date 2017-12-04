@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Dns</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
+  <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- <link rel="stylesheet" type="text/css" href="stylesheet.css"> -->
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+  <nav class="navbar navbar-default" role="navigation" style="margin-bottom: 0px; background-color: white;    border-bottom: 1px solid #e4e4e4;">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="customnavbar">
+      <ul class="nav navbar-nav">
+
+
+        <li class='writng'>
+          <%=link_to 'dnsimple', domains_path , :style=>'color: #1A5EC6 ;margin-left: -200px'%></li>
+            </div>
+
+       
+      </ul>
+      <form class="navbar-form navbar-left" role="search" id="three">
+         <div class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle js-navbar-filter-btn" id="filter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filter <span class="caret"></span></button>
+                <ul class="dropdown-menu js-navbar-filter-dropdown">
+                  <li>
+                    <a href="/dashboard/filter?filter=expired&amp;name=Expired">
+                      <strong>Expired</strong> domains
+</a>                  </li>
+                  <li>
+                    <a href="/dashboard/filter?filter=expiring&amp;name=Expiring">
+                      <strong>Expiring</strong> domains
+</a>                  </li>
+                  <li>
+                    <a href="/dashboard/filter?filter=hosted&amp;name=DNS+Only">
+                      <strong>DNS Only</strong> domains
+</a>                  </li>
+                  <li>
+                    <a href="/dashboard/filter?filter=transferring_in&amp;name=Transferring">
+                      <strong>Transferring</strong> domains
+</a>                  </li>
+                  <li>
+                    <a href="/dashboard/filter?filter=registered&amp;name=Registered">
+                      <strong>Registered</strong> domains
+</a>                  </li>
+                  <li>
+                    <a href="/dashboard/filter?filter=having_certificates&amp;name=With+SSL+certificates">
+                      <strong>With SSL certificates</strong> domains
+</a>                  </li>
+                </ul>
+                
+              </div>
+        
+        <div class="form-group">
+          <input type="text" class="form-control" id='placeholder' placeholder="Search your domains">
+        </div>
+        <span class="input-group-btn">
+          <div class="search">
+                
+          <i class="fa fa-search" aria-hidden="true" id='btn-default'></i>
+        
+   </div>
+              </span>
+        
+
+      </form>
+
+      <%= image_tag ("gravatar-default.png" ),:class => "image" %>
+
+
+
+    </div>
+    <!-- /.navbar-collapse -->
+  </nav>
+
+  <div class="container">
+  </div>
+
+  <%=yield %>
+
+
+</body>
+
+</html>

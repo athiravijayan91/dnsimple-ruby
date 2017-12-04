@@ -1,0 +1,185 @@
+// Place all the styles related to the Domain_records controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+nav nav-pills{
+	background-color:white; 
+	margin-top: 0px;
+    border-bottom:4px;
+    border-radius: 0;
+    border-bottom: 1px solid #e4e4e4;
+    padding-left: 400px
+}
+.nav-link active{
+	color:black
+}
+.nav-link{
+	color:black
+}
+
+
+
+
+.form, .form-w-100 {
+    display: inline-block;
+    padding: 1.2rem 2.4rem;
+    background: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+    text-align: left;
+    min-width: 30em;
+}
+.subnav {
+    margin-bottom: 2.4rem;
+    background: #fff;
+    border-bottom: 1px solid #e4e4e4;
+    box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.05);
+}
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.subnav-list {
+    margin: 0;
+    font-size: 0.8em;
+}
+.subnav-list .active {
+    border-bottom-color: #f8c939;
+}
+@media (min-width: 40em)
+{
+.subnav-list li {
+    margin-right: 1.2rem;
+    font-size: 14px;
+}
+}
+
+.subnav-list li {
+    padding: 0.6rem 0;
+    display: inline-block;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+}
+.customnavbar {
+    margin-left: 365px;
+    font-size: 20px;
+
+}
+.navbar-default {
+    
+    border-bottom: 1px solid #e4e4e4;
+}
+header, hgroup, main, menu, nav, section, summary {
+    display: block;
+}
+.form, .form-w-100 {
+    display: inline-block;
+    padding: 1.2rem 2.4rem;
+    background: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+    text-align: left;
+    min-width: 30em;
+}
+
+#form {
+    margin-left: 350px;
+    width: 30%;
+}
+
+#head{
+	margin-left: 350px;
+}
+.nav-header-current {
+    font-weight: normal;
+    color: #979797;
+}
+
+.record-preview {
+    padding: 1.2rem;
+    margin-bottom: 1.2rem;
+    min-height: 20px;
+    background: #f1f1f1;
+}
+.records-table {
+    width: 100%;
+    margin-bottom: 2.4rem;
+    background: #fff;
+    border: 1px solid #f1f1f1;
+    border-radius: 3px;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+@media (min-width: 40em){
+.records-table thead {
+    display: table-header-group;
+}
+}
+
+@media (min-width: 40em)
+{
+.records-table thead tr {
+    display: table-row;
+}
+}
+
+.records-table tbody tr:nth-child(odd) {
+    background-color: #f1f1f1;
+}
+
+.records-table tr, .records-table td {
+    padding: 1.2rem 0.6rem;
+    padding-left:20px;
+}
+@media (min-width: 40em)
+{
+.records-table tr {
+    display: table-row;
+}
+}
+
+.record-column-details {
+    color: #979797;
+}
+th{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+}
+.records-table th {
+    padding: 1.2rem;
+    border-bottom: 2px solid #f8c939;
+}
+#bp {
+    color: #fff;
+    background: #1A5EC6;
+    border-color: #144999;
+    text-shadow: none;
+}
+
+#bottom{
+    margin-left: -440px;
+}
+#island{
+    margin-top: 60px;
+    margin-left: 80px;
+}
+#re, #re1{
+        margin-left: 80px;
+}
+.bar{
+    margin-left: 1090px;
+    margin-top: -20px;
+}
+#colorb{
+    color:#1A5EC6;
+}
+
+
+
+

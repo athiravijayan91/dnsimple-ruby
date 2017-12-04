@@ -1,0 +1,252 @@
+<div>
+  <div class="container-main">
+     <div class="subnav">
+    <div class="container" id="container">
+      <ul class="subnav-list" id="slist">
+
+        <li title="Manage your domains" rel="tooltip" class="active">
+          <%=link_to "Domains" , :controller=> "manage_domains", :action => "index"%>
+
+        </li>
+        <li title="Manage your contacts" rel="tooltip">
+          <%=link_to "Contacts" , :controller=> "contacts", :action => "index" %>
+
+        </li>
+        <li title="Manage custom DNS templates" rel="tooltip"  ><%=link_to "Templates" , :controller=> "templates", :action => "index" %>
+          
+        </li>
+
+      </ul>
+    </div>
+  </div>
+    <div>
+      
+      <h4 class="title" > <%= link_to "#{@domain.domain_name}" %></h4>
+    </div>
+    <div class="containerclass">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="sidebar-nav">
+            <div class="navbar navbar-default" id="nb" role="navigation">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+
+                </button>
+                <span class="visible-xs navbar-brand">Sidebar menu</span>
+              </div>
+              <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                <ul class="nav navbar-nav">
+                  <li class="active">
+                  <div id="sidet" >
+                    
+                    <a class="page-nav-item icon-domain page-nav-active"  >
+
+                      
+                        <i class="fa fa-globe"  aria-hidden="true">
+                        </i>
+                      <%= link_to "Domain" , :controller => "domains", :action => "show" %>
+                      
+                      </a>
+                      </div>
+                    
+                    
+                   </li>
+                  
+                  <li class='ic'>
+                    <span class="icon">
+                      <i class="fa fa-tasks" aria-hidden="true">
+                      </i>
+
+                     <%= link_to "DNS", :controller => "dns",:action => "index",:domain_id=>"#{@domain.id}"%><!-- only access it this way  -->
+
+                    </span>
+                  </li>
+                  <li >
+                    <span class="icon">
+                      <i class="fa fa-lock" aria-hidden="true"></i>
+                      <%= link_to "SSL Certificates" , :controller => "ssl_certificates",:action => "index",:domain_id=>"#{@domain.id}"  %>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="icon">
+                      <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                      <%= link_to "Email forwarding" , :controller => "email_forwardings",:action => "index",:domain_id=>"#{@domain.id}"  %>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="icon">
+                      <i class="fa fa-cubes" aria-hidden="true"></i>
+                      <%= link_to "DNSSEC" , :controller => "dnssecs",:action => "index",:domain_id=>"#{@domain.id}"  %>
+                    </span>
+
+                  </li>
+                  <li>
+                    <span class="icon">
+                      <i class="fa fa-cog" aria-hidden="true"></i>
+                       <%= link_to "Settings" , :controller => "domains/settings",:action => "show",:domain_id=>"#{@domain.id}"  %>
+                    </span>
+                  </li>
+                  </li>
+                </ul>
+              </div>
+             </div>
+          </div>
+        </div>
+      </div>
+       <!-- <start of rightmenu></start> -->
+
+      <div class="right_menu">
+        <ul class="card-list" id="cardlist">
+          <li class="card-list-item">
+            <header class="card-header">
+              <h1 class="card-title">Domain resolution</h1>
+              <p class="card-subtitle">Your domain is resolving through the following name servers:</p>
+            </header>
+            <div id="zone-status">
+              <ul class="card-list-bullet">
+
+                <li>ns1.dnsimple.com</li>
+
+                <li>ns2.dnsimple.com</li>
+
+                <li>ns3.dnsimple.com</li>
+
+                <li>ns4.dnsimple.com</li>
+
+              </ul>
+              <div class="l-vert-island">
+
+
+                <p class="card-resolution-full"></p>
+                <p class="card-resolution card-resolution-full"><span class="icon-check"><i class="fa fa-check" aria-hidden="true"></i>Your domain is resolving with DNSimple’s name servers.</span>
+                </p>
+
+              </div>
+            </div>
+            <div class="card-action-list js-nameserver-actions l-no-padding">
+              <div class="cn"><a href="/a/76691/domains/athira.cloud/name_servers/edit" class="card-action-link js-change-name-servers">> Change name servers</a>
+              </div>
+              <button type="button" class="btn btn-default btn-sm" id="refresh">
+          <span class="glyphicon glyphicon-refresh"></span> Refresh
+        </button>
+              
+            </div>
+          </li>
+
+          <!-- <li>item 2</li> -->
+          <li class="card-list-item">
+            <header class="card-header">
+              <h1 class="card-title">Registered</h1>
+              <p class="card-subtitle">
+                <span class="l-block">Renew by Nov 02, 2018</span>
+              </p>
+            </header>
+            <ul class="card-action-list">
+              <div>
+                <form accept-charset="UTF-8" method="post">
+                  <input name="utf8" type="hidden" value="✓">
+                  <input type="hidden" name="authenticity_token" value="YKnoPsnRheZalsmooRm1CuRceQwyngAZRhWqwfxI22ND6v6TKPzLTh1AxKk5O6Qn4DQ7tQ3p6hsk0agM7SQ8Vw==">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" name="expiration-notification" id="expiration-notification" value="false" class="js-checkbox-submit"> Auto-renew this domain before it expires.
+                      <span class="text-subtle">Renewal price is $20.00 per year</span>
+                    </label>
+                  </div>
+                </form>
+              </div>
+              <div>
+                <form action="/a/76691/domains/athira.cloud/expiration_notification" accept-charset="UTF-8" method="post">
+                  <input name="utf8" type="hidden" value="✓">
+                  <input type="hidden" name="_method" value="delete">
+                  <input type="hidden" name="authenticity_token" value="YKnoPsnRheZalsmooRm1CuRceQwyngAZRhWqwfxI22ND6v6TKPzLTh1AxKk5O6Qn4DQ7tQ3p6hsk0agM7SQ8Vw==">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" name="expiration-notification" id="expiration-notification" value="true" class="js-checkbox-submit" checked="checked"> Email me when this domain is about to expire
+                    </label>
+                  </div>
+                </form>
+              </div>
+              <div>
+                <a class="icon-add"><i class="fa fa-plus" aria-hidden="true" id="blue"></i> <h class="r">Renew domain</h></a>
+              </div>
+              <div class="card-action-multiple-btns">
+                <button type="button" class="btn btn-default btn-sm" id="transfer">
+          <span ><i class="fa fa-chevron-right" class="blue" aria-hidden="true"></i> <h> Transfer out</h> </span>
+
+        </button>
+              </div>
+            </ul>
+          </li>
+
+
+          <li class="card-list-item">
+            <header class="card-header">
+              <h1 class="card-title">Contact</h1>
+            </header>
+            <table class="card-table">
+              <tbody>
+                <tr>
+                  <td class="text-subtle">Name</td>
+                  <td>Athira Vijayan</td>
+                </tr>
+                <tr>
+                  <td class="text-subtle">Address</td>
+                  <td>1705 Westbury Way APT AA1</td>
+                </tr>
+                <tr>
+                  <td class="text-subtle"></td>
+                  <td>Lehi Utah 84043 US</td>
+                </tr>
+                <tr>
+                  <td class="text-subtle">Email</td>
+                  <td>pkathiravijayan@gmail.com</td>
+                </tr>
+                <tr>
+                  <td class="text-subtle">Phone</td>
+                  <td>+1 442 2459171</td>
+                </tr>
+              </tbody>
+            </table>
+            <ul class="card-action-list">
+              <div>
+                <a class="card-action-link" href="/a/76691/domains/athira.cloud/contact_modifications/new">> Change contact</a>
+              </div>
+            </ul>
+            <div class="card-separator">
+              <div class="card-extra-content">
+                <div class="l-vert-island">
+                  <p><strong>WHOIS Privacy is off</strong>. Your contact information is public.</p>
+                </div>
+                <ul class="card-action-list l-no-padding">
+                  <div>
+                    <button type="button" class="btn btn-default btn-sm" id="turn">
+          <span ><i class="fa fa-plus" aria-hidden="true"></i></span> Turn WHOIS Privacy on
+        </button>
+                  </div>
+                </ul>
+
+
+              </div>
+            </div>
+          </li>
+
+          <li class="card-list-item">
+            <header class="card-header">
+              <h1 class="card-title">Activity</h1>
+              <p class="card-subtitle">Find out when records were created, Whois privacy got enabled and much more... by searching through your domain's activity</p>
+            </header>
+            <ul class="card-action-list">
+              <div>
+                <a class="card-action-link" href="/a/76691/domains/athira.cloud/activity">> See activity</a>
+              </div>
+            </ul>
+          </li>
+
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</div>

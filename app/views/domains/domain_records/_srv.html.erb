@@ -1,0 +1,141 @@
+<div>
+   <div class="subnav">
+      <div class="container">
+         <ul class="subnav-list">
+            <li title="Manage your domains" rel="tooltip" class="active"><a href="/a/76691/domains">Domains</a>
+            </li>
+            <li title="Manage your contacts" rel="tooltip"><a href="/a/76691/contacts">Contacts</a>
+            </li>
+            <li title="Manage custom DNS templates" rel="tooltip"><a href="/a/76691/templates">Templates</a>
+            </li>
+         </ul>
+      </div>
+   </div>
+   <header class="nav-header" id="head">
+      <h1><%= link_to "#{@domain.id}" %></h1>
+      <h1>
+        <%= link_to "#{@domain.domain_name}" %>
+        
+        <span class="nav-header-separator">/</span>
+
+      <span class="nav-header-current">Add SRV record</span>
+      <div class="pull-right">
+        <a class="btn-ghost icon-dns" rel="tooltip" title="Jump to DNS records" href="/a/76691/domains/athira.cloud/records"></a>
+        <a class="btn-ghost js-domain-favorite-btn" href="/a/76691/domains/athira.cloud/favorite">
+           <span class="domain-favorite-btn js-domain-favorite-star domain-favorite-false" title="Add to favorites" rel="tooltip"></span> 
+        </a>      
+      </div>
+  </h1>
+   </header>
+   <div class="form" id="form">
+      <h2>Add SRV record</h2>
+      <p>Add an "SRV" record to specify the location of servers for a specific service.</p>
+      <fieldset>
+         <%=form_for(@domain_record, :url=> url_for(:controller => 'domain_records', :action => 'create'), html: { method: :post }) do |form| %>
+            <div class="form-group">
+               <input type="hidden" name="domain_record[record_type]" value="<%= @record_type %>">
+               <input type="hidden" name="domain_record[domain_id]" value="<%= @domain.id%>">
+               <input type="hidden" name="domain_record[domain_name]" value="<%= @domain.domain_name%>">
+               <label for="record_name">Name</label>
+               <%=form.text_field :name %>
+
+                  <span class="help-block">Leave this blank to create a record for athira.cloud. You may also use the wildcard (*) here.</span>
+            </div>
+            <div class="form-group">
+               <label for="record_parts_symbolic_name">Symbolic Name</label>
+               <%=form.text_field :symbolic_name %>
+
+                  <span class="help-block">This will be a symbolic name for the service, like sip. It might also be called Service at other DNS providers.</span>
+            </div>
+            <div class="form-group">
+               <label for="record_parts_protocol">Protocol</label>
+               <%=form.text_field :protocol %>
+
+                  <span class="help-block">This will usually be TCP or UDP.</span>
+            </div>
+            <div class="form-group">
+               <label for="record_prio">Priority</label>
+               <%=form.text_field :priority %>
+
+            </div>
+            <div class="form-group">
+               <label for="record_parts_weight">Weight</label>
+               <%=form.text_field :weight %>
+
+                  <span class="help-block">A relative weight for SRV records with the same priority.</span>
+            </div>
+            <div class="form-group">
+               <label for="record_parts_port">Port</label>
+               <%=form.text_field :port %>
+
+                  <span class="help-block">The TCP or UDP port on which the service is found.</span>
+            </div>
+            <div class="form-group">
+               <label required="required" for="record_parts_target">Target</label>
+               <%=form.text_field :target %>
+
+                  <span class="help-block">The canonical hostname of the machine providing the service.</span>
+            </div>
+            <div class="form-group">
+               <label for="record_ttl">TTL (Refresh Rate)</label>
+               <select class="form-control input-large " name="record[ttl]" id="record_ttl">
+                  <option value="60">1 minute</option>
+                  <option value="600">10 minutes</option>
+                  <option selected="selected" value="3600">1 hour</option>
+                  <option value="7200">2 hours</option>
+                  <option value="14400">4 hours</option>
+                  <option value="28800">8 hours</option>
+                  <option value="43200">12 hours</option>
+                  <option value="86400">1 day</option>
+                  <option value="259200">3 days</option>
+               </select>
+            </div>
+
+
+            <fieldset>
+               <div id="record-regions" class="form-group">
+                  <label for="record_region_contexts">Respond From Regions</label>
+
+                  <div class="checkbox">
+                     <label>
+                        <input type="checkbox" name="record[regions][]" id="region-all" value="global" data-region-wildcard="true" checked="checked"> Global
+                     </label>
+                  </div>
+
+                  <hr>
+
+                  <div class="checkbox">
+                     <label>
+                        <input type="checkbox" name="record[regions][]" id="region-sv1" value="SV1" disabled="disabled" data-region="true"> California, US
+                     </label>
+                  </div>
+                  <div class="checkbox">
+                     <label>
+                        <input type="checkbox" name="record[regions][]" id="region-ord" value="ORD" disabled="disabled" data-region="true"> Illinois, US
+                     </label>
+                  </div>
+                  <div class="checkbox">
+                     <label>
+                        <input type="checkbox" name="record[regions][]" id="region-iad" value="IAD" disabled="disabled" data-region="true"> Virginia, US
+                     </label>
+                  </div>
+                  <div class="checkbox">
+                     <label>
+                        <input type="checkbox" name="record[regions][]" id="region-ams" value="AMS" disabled="disabled" data-region="true"> Amsterdam, NL
+                     </label>
+                  </div>
+                  <div class="checkbox">
+                     <label>
+                        <input type="checkbox" name="record[regions][]" id="region-tko" value="TKO" disabled="disabled" data-region="true"> Tokyo, JP
+                     </label>
+                  </div>
+               </div>
+            </fieldset>
+            <%=form.submit "Add record"%>
+
+               <% end %>
+
+
+      </fieldset>
+   </div>
+</div>

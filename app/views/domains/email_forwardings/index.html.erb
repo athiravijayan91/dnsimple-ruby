@@ -1,0 +1,120 @@
+<div>
+   <div class="subnav">
+    <div class="container" id="container">
+      <ul class="subnav-list">
+
+        <li title="Manage your domains" rel="tooltip" class="active">
+          <%=link_to "Domains" , manage_domains_path %>
+
+        </li>
+        <li title="Manage your contacts" rel="tooltip">
+          <%=link_to "Contacts" , contacts_path %>
+
+        </li>
+        <li title="Manage custom DNS templates" rel="tooltip"  ><%=link_to "Templates" , templates_path %>
+          
+        </li>
+
+      </ul>
+    </div>
+  </div>
+   <div id="flexc">
+      <div id="container">
+         <div>
+            <h4 class="title" id="ttl"> <%= link_to "#{@domain.domain_name}" %></h4>
+         </div>
+         <div class="row">
+            <div class="col-sm-3" id='sm'>
+               <div class="sidebar-nav">
+                  <div class="navbar navbar-default" id="nb" role="navigation">
+                     <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                           <span class="sr-only">Toggle navigation</span>
+
+                        </button>
+                        <span class="visible-xs navbar-brand">Sidebar menu</span>
+                     </div>
+                     <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                        <ul class="nav navbar-nav">
+                           <li>
+
+                              <span>
+                        <i class="fa fa-globe"  aria-hidden="true">
+                        </i>
+                      
+                      <%= link_to "Domain" ,domain_path(:id=>"#{@domain.id}")  %>
+                      </span>
+
+                           </li>
+
+                           <li>
+                              <span>
+                      <i class="fa fa-tasks" aria-hidden="true">
+                      </i>
+
+                     <%= link_to "DNS" , :controller => "dns",:action => "index",:domain_id=>"#{@domain.id}"  %><!-- only access it this way  -->
+
+                    </span>
+                           </li>
+                           <li>
+
+                              <span>
+                      <i class="fa fa-lock" aria-hidden="true"></i>
+                      <%= link_to "SSL Certificates" , :controller => "ssl_certificates",:action => "index",:domain_id=>"#{@domain.id}"  %>
+                    </span>
+
+                           </li>
+                           <li class="active">
+                              <div id="sidet" class='sideset'>
+                    <a class="page-nav-item icon-domain page-nav-active" >
+                    
+                      <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                      <%= link_to "Email forwarding" , :controller => "email_forwardings",:action => "index",:domain_id=>"#{@domain.id}"  %>
+                    
+                              </a>
+                              </div>
+                           </li>
+                           <span>
+                      <i class="fa fa-cubes" aria-hidden="true"></i>
+                      <%= link_to "DNSSEC" , :controller => "dnssecs",:action => "index",:domain_id=>"#{@domain.id}"  %>
+                    </span>
+
+                           </li>
+                           <li>
+                              <span>
+                      <i class="fa fa-cog" aria-hidden="true"></i>
+                       <%= link_to "Settings" , :controller => "domains/settings",:action => "show",:domain_id=>"#{@domain.id}"  %>
+                    </span>
+                           </li>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div>
+        <section class="page-content">
+
+    
+<ul class="card-list" id="cl">
+    <li class="card-list-item">
+      <header class="card-header">
+        <h1 class="card-title">Email forwarding</h1>
+      </header>
+      <div class="l-vert-island">
+        <p>With catch-all expressions, you can easily create custom email address that will be forwarded to your inbox.</p>
+
+        <p>Your current plan supports <strong>25 email forwarders</strong> with <strong>up to 10,000 messages</strong> per month <a target="_blank" class="icon-question" href="https://support.dnsimple.com/articles/email-forwarding/"></a></p>
+        <p>We will automatically add the DNS records required for your email to be forwarded. <br><strong>Existing MX records for your domain will be removed automatically.</strong></p>
+      </div>
+      <a class="btn btn-primary" href="/a/76691/domains/athira.cloud/email_forwards/new">Add email forwards for $2/month</a>
+    </li>
+</ul>
+
+  </section>
+      </div>
+
+   </div>
+</div>

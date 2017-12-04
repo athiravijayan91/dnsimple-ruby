@@ -1,0 +1,54 @@
+<div>
+	 <div class="subnav">
+    <div class="container" id="container">
+      <ul class="subnav-list" id="slist">
+
+        <li title="Manage your domains" rel="tooltip" >
+          <%=link_to "Domains" , :controller=> "manage_domains", :action => "index",id:"grey" %>
+
+        </li>
+        <li title="Manage your contacts" rel="tooltip" class="active">
+          <%=link_to "Contacts" , :controller=> "contacts", :action => "index",id:"black" %>
+
+        </li>
+        <li title="Manage custom DNS templates" rel="tooltip"><%=link_to "Templates" , :controller=> "templates", :action => "index",:id=>"grey" %>
+          
+        </li>
+
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="container container-main">
+      
+      
+      
+<header class="nav-header">
+  <h1><span class="nav-header-current" id="c">Contacts</span></h1>
+</header>
+
+
+  <div class="btn-toolbar">
+    <a title="Add a new contact" bootstrap_type="primary" class="btn btn-primary" id="nc" href="/a/76691/contacts/new">New Contact</a>
+  </div>
+  <table class="model-table">
+    <thead>
+      <tr>
+        <th class="column-name">Contact</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr id="tr">
+          <td class="column-name" > <div id="av"> Athira Vijayan</div>
+          </td>
+          <td class="nowrap">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+    </div>
+</div>

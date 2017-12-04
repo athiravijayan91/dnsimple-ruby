@@ -1,0 +1,56 @@
+<%=flash[:error] %>
+<div>
+   <div class="subnav">
+    <div class="container" id="container">
+      <ul class="subnav-list" id="slist">
+
+        <li title="Manage your domains" rel="tooltip" class="active">
+          <%=link_to "Domains" , manage_domains_path ,id:"black"%>
+
+        </li>
+        <li title="Manage your contacts" rel="tooltip">
+          <%=link_to "Contacts" , contacts_path,id:"grey" %>
+
+        </li>
+        <li title="Manage custom DNS templates" rel="tooltip"  ><%=link_to "Templates" , templates_path ,id:"grey" %>
+          
+        </li>
+
+      </ul>
+    </div>
+  </div>
+
+  <div class='registerdomainpage'>
+    <p class="rp">Transfer domain</p>
+
+    <%=content_tag :div do %>
+      <p class="name">Domain Name</p>
+      <%=form_for("domain name", url:  {controller: "transfers", action: "new"}, html: { method: :get }) do |form| %>
+        <input class="dname" id="domainNameInput" type="text" name="domain_name" placeholder="example.com" required="required" autofocus="autofocus">
+
+        
+        <p class="p1">Domain transfers are billed immediately upon successful transfer.
+
+          <br>
+          <a href="/tlds?account_id=76691">See our TLD price list</a> for prices.
+
+        </p>
+        <div class="b1b2">
+        
+          
+          <%=form.submit "Continue" ,:id=>"continue"%>
+        
+  
+        <% end %>
+      
+            
+           
+            <%= button_to 'Cancel' ,manage_domains_path, method: :get , :id=>"cancl"%>
+         
+        
+          </div>
+    <% end %>
+    
+  </div>
+</div>
+

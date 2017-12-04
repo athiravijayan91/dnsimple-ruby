@@ -1,0 +1,238 @@
+<div>
+   <div class="subnav">
+      <div class="container">
+         <ul class="subnav-list">
+            <li title="Manage your domains" rel="tooltip" class="active"><a href="/a/76691/domains">Domains</a>
+            </li>
+            <li title="Manage your contacts" rel="tooltip"><a href="/a/76691/contacts">Contacts</a>
+            </li>
+            <li title="Manage custom DNS templates" rel="tooltip"><a href="/a/76691/templates">Templates</a>
+            </li>
+         </ul>
+      </div>
+   </div>
+   <header class="nav-header" id="head">
+     
+      <h1>
+        <%= link_to "#{@domain.domain_name}" %>
+        
+        <span class="nav-header-separator">/</span>
+
+      <span class="nav-header-current">Add CAA record</span>
+      <div class="pull-right">
+        <a class="btn-ghost icon-dns" rel="tooltip" title="Jump to DNS records" href="/a/76691/domains/athira.cloud/records"></a>
+        <a class="btn-ghost js-domain-favorite-btn" href="/a/76691/domains/athira.cloud/favorite">
+           <span class="domain-favorite-btn js-domain-favorite-star domain-favorite-false" title="Add to favorites" rel="tooltip"></span> 
+      </a>      
+   </div>
+  </h1>
+   </header>
+
+
+   <div class="form">
+  <h2>Add CAA record</h2>
+  
+    <p>Add a "CAA" record is used define what certificate authorities are allowed to issue certificates for this domain.</p>
+
+<ul class="nav nav-tabs js-caa-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#providers" aria-controls="providers" role="tab" data-toggle="tab" data-section="providers" aria-expanded="true">Providers</a></li>
+  <li role="presentation"><a href="#reports" aria-controls="reports" role="tab" data-toggle="tab" data-section="reports">Reports</a></li>
+  <li role="presentation"><a href="#custom" aria-controls="custom" role="tab" data-toggle="tab" data-section="custom">Custom</a></li>
+</ul>
+
+<!-- Tab panes -->
+
+
+<div class="tab-content l-vert-island mb4">
+
+
+   <!--providers -->
+
+  <div role="tabpanel" class="tab-pane active" id="providers">
+    
+      
+    
+      <fieldset>
+        <%=form_for(@domain_record, :url=> url_for(:controller => 'domain_records', :action => 'create'), html: { method: :post }) do |form| %>
+         <div class="form-group">
+            <input type="hidden" name="domain_record[record_type]" value="<%= @record_type %>">
+            <input type="hidden" name="domain_record[domain_id]" value="<%= @domain.id%>">
+            <input type="hidden" name="domain_record[domain_name]" value="<%= @domain.domain_name%>">
+            <label for="record_name">Name</label>
+            <%=form.text_field :name %>
+          
+          <span class="help-block">Leave this blank to create a record for <%= "#{@domain.domain_name}" %>.<br>You may also use the wildcard (*) here.</span>
+</div>
+        <input value="issue" class="js-caa-providers-tag" type="hidden" name="record[parts][tag]" id="record_parts_tag">
+
+        <div class="form-group">
+          <label for="record_parts_value">Provider</label>
+          <select class="form-control input-large" name="record[parts][value]" id="record_parts_value"><option value="">Select a CA Provider</option>
+<option value="comodoca.com">Comodo</option>
+<option value="digicert.com">Digicert</option>
+<option value="entrust.net">Entrust</option>
+<option value="geotrust.com">GeoTrust</option>
+<option value="izenpe.com">Izenpe</option>
+<option value="letsencrypt.org">Let's Encrypt</option>
+<option value="symantec.com">Symantec</option>
+<option value="thawte.com">Thawte</option></select>
+</div>
+        <div class="l-vert-island">
+          <p><strong>Certificate type</strong></p>
+          <label for="certificate-standard">
+            <input type="radio" name="certificate-type" id="certificate-standard"> <span class="l-left-padding">Standard</span>
+          </label>
+          <label for="certificate-wildcard" class="l-left-big-padding">
+            <input type="radio" name="certificate-type" id="certificate-wildcard"> <span class="l-left-padding">Wildcard</span>
+          </label>
+          <div class="l-vert-island"></div>
+        </div>
+
+          <div class="form-group">
+    <label for="record_ttl">TTL (Refresh Rate)</label>
+    <select class="form-control input-large js-caa-providers-ttl" name="record[ttl]" id="record_ttl"><option value="60">1 minute</option>
+<option value="600">10 minutes</option>
+<option selected="selected" value="3600">1 hour</option>
+<option value="7200">2 hours</option>
+<option value="14400">4 hours</option>
+<option value="28800">8 hours</option>
+<option value="43200">12 hours</option>
+<option value="86400">1 day</option>
+<option value="259200">3 days</option></select>
+</div>
+</fieldset>  </div>
+
+
+
+<!--reports -->
+
+
+
+  <div role="tabpanel" class="tab-pane" id="reports">
+    
+      
+
+      <fieldset>
+        <div class="form-group">
+          
+          <input type="hidden" name="domain_record[record_type]" value="<%= @record_type %>">
+            <input type="hidden" name="domain_record[domain_id]" value="<%= @domain.id%>">
+            <input type="hidden" name="domain_record[domain_name]" value="<%= @domain.domain_name%>">
+            <label for="record_name">Name</label>
+            <%=form.text_field :name %>
+          
+          <span class="help-block">Leave this blank to create a record for <%= "#{@domain.domain_name}" %>.<br>You may also use the wildcard (*) here.</span>
+</div>
+        <input value="iodef" class="js-caa-reports-tag" type="hidden" name="record[parts][tag]" id="record_parts_tag" disabled="">
+
+        <div class="form-group">
+          <label for="record_parts_value">Email</label>
+          <%=form.text_field :email %>
+</div>
+          <div class="form-group">
+    <label for="record_ttl">TTL (Refresh Rate)</label>
+    <select class="form-control input-large js-caa-reports-ttl" name="record[ttl]" id="record_ttl" disabled=""><option value="60">1 minute</option>
+<option value="600">10 minutes</option>
+<option selected="selected" value="3600">1 hour</option>
+<option value="7200">2 hours</option>
+<option value="14400">4 hours</option>
+<option value="28800">8 hours</option>
+<option value="43200">12 hours</option>
+<option value="86400">1 day</option>
+<option value="259200">3 days</option></select>
+</div>
+ </div>
+</div>
+
+
+
+
+
+<!--custom-->
+
+  <div role="tabpanel" class="tab-pane" id="custom">
+    
+      
+
+      <fieldset>
+        <div class="form-group">
+          <label for="record_name">Name</label>
+          <%=form.text_field :name %>
+          
+          <span class="help-block">Leave this blank to create a record for athira.cloud.<br>You may also use the wildcard (*) here.</span>
+</div>
+        <div class="form-group">
+          <label for="record_parts_tag">Tag</label>
+          <%=form.text_field :tag %>
+</div>
+        <div class="form-group">
+          <label for="record_parts_value">Value</label>
+          <%=form.text_field :value %>
+</div>
+          <div class="form-group">
+    <label for="record_ttl">TTL (Refresh Rate)</label>
+    <select class="form-control input-large js-caa-custom-ttl" name="record[ttl]" id="record_ttl" disabled=""><option value="60">1 minute</option>
+<option value="600">10 minutes</option>
+<option selected="selected" value="3600">1 hour</option>
+<option value="7200">2 hours</option>
+<option value="14400">4 hours</option>
+<option value="28800">8 hours</option>
+<option value="43200">12 hours</option>
+<option value="86400">1 day</option>
+<option value="259200">3 days</option></select>
+</div>
+ </div>
+</div>
+
+
+      <fieldset>
+  <div id="record-regions" class="form-group">
+    <label for="record_region_contexts">Respond From Regions</label>
+
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="record[regions][]" id="region-all" value="global" data-region-wildcard="true" checked="checked"> Global
+      </label>
+    </div>
+
+    <hr>
+
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="record[regions][]" id="region-sv1" value="SV1" disabled="disabled" data-region="true"> California, US
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="record[regions][]" id="region-ord" value="ORD" disabled="disabled" data-region="true"> Illinois, US
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="record[regions][]" id="region-iad" value="IAD" disabled="disabled" data-region="true"> Virginia, US
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="record[regions][]" id="region-ams" value="AMS" disabled="disabled" data-region="true"> Amsterdam, NL
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="record[regions][]" id="region-tko" value="TKO" disabled="disabled" data-region="true"> Tokyo, JP
+        </label>
+      </div>
+</div>
+
+    <%=form.submit "Add record"%>
+
+            <% end %>
+
+</fieldset>
+</fieldset> 
+</fieldset>
+</div>
+
+    
+</div>
+

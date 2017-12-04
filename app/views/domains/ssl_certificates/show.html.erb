@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Domain name:</strong>
+  <%= @ssl_certificate.domain_name %>
+</p>
+
+<p>
+  <strong>Domain:</strong>
+  <%= @ssl_certificate.domain_id %>
+</p>
+
+<%= link_to 'Edit', edit_ssl_certificate_path(@ssl_certificate) %> |
+<%= link_to 'Back', ssl_certificates_path %>

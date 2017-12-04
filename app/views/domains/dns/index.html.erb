@@ -1,0 +1,239 @@
+<div>
+  <div class="container-main">
+     <div class="subnav">
+    <div class="container" id="container">
+      <ul class="subnav-list" id="slist">
+
+        <li title="Manage your domains" rel="tooltip" class="active">
+          <%=link_to "Domains" , manage_domains_path %>
+
+        </li>
+        <li title="Manage your contacts" rel="tooltip">
+          <%=link_to "Contacts" , contacts_path %>
+
+        </li>
+        <li title="Manage custom DNS templates" rel="tooltip"  ><%=link_to "Templates" , templates_path %>
+          
+        </li>
+
+      </ul>
+    </div>
+  </div>
+
+    <div>
+
+      
+      <h4 class="title" id="ttl"> <%= link_to "#{@domain.domain_name}" %></h4>
+    </div>
+    <div class="containerclass">
+      <div class="row" id="left">
+        <div class="col-sm-3" id='sm'>
+          <div class="sidebar-nav">
+            <div class="navbar navbar-default" id="nb" role="navigation">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+
+                </button>
+                <span class="visible-xs navbar-brand">Sidebar menu</span>
+              </div>
+              <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                <ul class="nav navbar-nav">
+                  <li class="active"><span><i class="fa fa-globe" aria-hidden="true"></i>
+                    <%= link_to "Domain" ,domain_path(:id=>"#{@domain.id}")  %>
+                  </span>
+                  </li>
+                  <li class="active">
+                    <div id="sidet" class='sideset'>
+                    <a class="page-nav-item icon-domain page-nav-active" >
+                    
+                      <i class="fa fa-tasks" aria-hidden="true">
+                      </i>
+
+                     <%= link_to "DNS" , :controller => "dns",:action => "index",:domain_id=>"#{@domain.id}"  %>
+                    
+                </a>
+            </div>
+                  </li>
+                    <span>
+                      <i class="fa fa-lock" aria-hidden="true"></i>
+                      <%= link_to "SSL Certificates" , :controller => "ssl_certificates",:action => "index",:domain_id=>"#{@domain.id}"  %>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                      <%= link_to "Email forwarding" , :controller => "email_forwardings",:action => "index",:domain_id=>"#{@domain.id}"  %>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <i class="fa fa-cubes" aria-hidden="true"></i>
+                      <%= link_to "DNSSEC" , :controller => "dnssecs",:action => "index",:domain_id=>"#{@domain.id}"  %>
+                    </span>
+
+                  </li>
+                  <li>
+                    <span>
+                      <i class="fa fa-cog" aria-hidden="true"></i>
+                       <%= link_to "Settings" , :controller => "domains/settings",:action => "show",:domain_id=>"#{@domain.id}"  %>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+             </div>
+          </div>
+        </div>
+      </div>
+       <!-- <start of rightmenu></start> -->
+
+      <div class="right_menu" id="rm">
+      	<section id="content" class="page-content">
+
+    
+  <ul class="card-list" id="card">
+
+    <li class="card-list-item">
+      <header class="card-header">
+        <h1 class="card-title">Name servers</h1>
+        <p class="card-subtitle">
+          Name servers manage your domain resolution.
+        </p>
+      </header>
+      <span class="js-domain-name is-hidden"></span>
+      <ul class="card-list-bullet js-nameserver-list" id="bullet">
+          
+            <li>ns1.dnsimple.com</li>
+          
+            <li>ns2.dnsimple.com</li>
+          
+            <li>ns3.dnsimple.com</li>
+          
+            <li>ns4.dnsimple.com</li>
+          
+        </ul>
+      <div class="l-vert-island">
+      </div>
+      <div class="cn"><a href="/a/76691/domains/athira.cloud/name_servers/edit" class="card-action-link js-change-name-servers">>  Change name servers</a>
+              </div>
+      
+      
+     
+      
+    </li>
+
+    <li class="card-list-item">
+      <header class="card-header">
+        <h1 class="card-title">Secondary DNS</h1>
+        <p class="card-subtitle">Add zone redundancy to your domain to protect it from DNS outages.</p>
+      </header>
+      <ul class="card-action-list">
+        <div class="cn"><a href="/a/76691/domains/athira.cloud/name_servers/edit" class="card-action-link js-change-name-servers">>  Configure Secondary DNS</a>
+              </div>
+              <div class="cn"><a href="/a/76691/domains/athira.cloud/name_servers/edit" class="card-action-link js-change-name-servers">>  Use DNSimple along another DNS provider</a>
+              </div>
+            
+            
+      </ul>
+    </li>
+
+    <li class="card-list-item">
+      <header class="card-header">
+        <h1 class="card-title">One click services</h1>
+        <p class="card-subtitle">Add all DNS records for a specific service at once.</p>
+      </header>
+      <ul class="card-action-list">
+        <div class="cn"><a href="/a/76691/domains/athira.cloud/name_servers/edit" class="card-action-link js-change-name-servers">>  Manage services</a>
+              </div>
+      </ul>
+    </li>
+
+    <li class="card-list-item">
+      <header class="card-header">
+        <h1 class="card-title">DNS records (<%= @domain_records.count %>) </h1>
+          <p class="card-subtitle">Your domain does not have any custom record created yet.</p>
+      </header>
+
+      <table class="card-table">
+          <thead>
+          <tr>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Content</th>
+          </tr>
+          </thead>
+          <tbody>
+            <% @domain_records.each do |domain_record|%>
+            <tr>
+              
+              <td><%= domain_record.record_type %> </td>
+              <td><%= domain_record.name %></td>
+              <td><%= domain_record.content %></td>
+              
+            </tr>
+            <%end%>
+            
+          </tbody>
+        </table>
+
+      <ul class="card-action-list">
+        <div>
+                <a class="icon-add"><i class="fa fa-plus" aria-hidden="true" id="blue"></i> </a>
+              
+          
+            <%= link_to "Manage records", :controller => "domain_records", :action => "index" ,:domain_name =>"#{@domain.domain_name}",:domain_id =>"#{@domain.id}" %><!--only access this way -->
+          </div>
+      </ul>
+    </li>
+
+    <li class="card-list-item" id="card-domain-resolution">
+      <header class="card-header">
+        <h1 class="card-title">DNS Hosting</h1>
+          <p class="card-subtitle">If you are not using this domain, you can disable the DNS hosting service.</p>
+      </header>
+      <ul class="card-action-list">
+        <div class="disable">
+            <button type="button" class="btn btn-sm btn-default icon-warning" data-toggle="modal" data-target="#disable-dns-hosting-confirmation">Disable the DNS hosting service</button>
+        </div>
+      </ul>
+    </li>
+
+    <li class="card-list-item">
+      <header class="card-header">
+        <h1 class="card-title">Zones</h1>
+        <p class="card-subtitle">Import or export the zone for athira.cloud</p>
+      </header>
+      <ul class="card-action-list">
+        <div class="cn"><a href="/a/76691/domains/athira.cloud/name_servers/edit" class="card-action-link js-change-name-servers">>  Export to a zone file</a>
+              </div>
+
+              <div>
+                <a class="icon-add"><i class="fa fa-plus" aria-hidden="true" id="blue"></i> <h class="r">Import from a zone file</h></a>
+              </div>
+          
+      </ul>
+    </li>
+
+      <li class="card-list-item">
+        <header class="card-header">
+          <h1 class="card-title">Vanity nameservers</h1>
+          <p class="card-subtitle">Enable vanity nameservers for athira.cloud</p>
+        </header>
+        <ul class="card-action-list">
+          <div class="disable">
+            <a class="btn btn-default card-action-link" >Configure nameservers</a>
+          </div>
+        </ul>
+      </li>
+
+  </ul>
+
+  </section>
+       
+      </div>
+
+    </div>
+
+  </div>
+</div>
+

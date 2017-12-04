@@ -1,0 +1,51 @@
+// Place all the styles related to the ssl_certificates controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+body {
+    background-color: #fafafa;
+}
+@media (min-width: 50rem)
+{.page-content 
+{
+    float: left;
+    width: 75%;
+}
+}
+
+
+.page-content {
+    min-height: 70rem;
+}
+.card-list {
+    padding: 1.2rem 0;
+    list-style-type: none;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    margin-left: 50%;
+    width: 300%;
+}
+
+ul, ol {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.card-list-item, .card-danger {
+    position: relative;
+    padding: 2.4rem;
+    background: #fff;
+    margin-bottom: 2.4rem;
+    border-bottom: 1px solid #e4e4e4;
+    border-right: 1px solid #e4e4e4;
+    
+}
+#flexc{
+	display:flex
+}
+#sslbtn{
+	margin-left: 0px;
+}
+#sm3{
+    margin-left:220px;
+}

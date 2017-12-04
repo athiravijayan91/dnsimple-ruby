@@ -1,0 +1,63 @@
+
+<div>
+   <div class="subnav">
+    <div class="container" id="container">
+      <ul class="subnav-list" id="sn">
+
+        <li title="Manage your domains" rel="tooltip" >
+          <%=link_to "Domains" , :controller=> "manage_domains", :action => "index"%>
+
+        </li>
+        <li title="Manage your contacts" rel="tooltip">
+          <%=link_to "Contacts" , :controller=> "contacts", :action => "index" %>
+
+        </li>
+        <li title="Manage custom DNS templates" rel="tooltip"  class="active"><%=link_to "Templates" , :controller=> "templates", :action => "index" %>
+          
+        </li>
+
+      </ul>
+    </div>
+  </div>
+
+  <div class="container container-main" id="contnr">
+      
+      
+      
+  <header class="nav-header">
+  <h1>
+
+      <span class="nav-header-current">Templates</span>
+  </h1>
+</header>
+
+
+
+  <p>Create and manage your own DNS templates to quickly add a group of records to any of your domains.</p>
+  <p><strong>You currently have no templates.</strong></p>
+  <div class="btn-toolbar" id="newb">
+      <a bootstrap_type="primary" class="btn btn-primary" href="/a/76691/templates/new">New Template</a>
+  </div>
+
+<div id="template-deletion-confirmation" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title">Delete Template</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete template <strong class="js-deletion-confirmation-name"></strong>?</p>
+        <p class="text-subtle">Deleting this template does not delete any of the records that were created with it.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <a class="btn btn-default btn btn-primary btn-warning js-deletion-confirmation-button" rel="nofollow" data-method="delete" href="#">Delete template</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    </div>
+</div>

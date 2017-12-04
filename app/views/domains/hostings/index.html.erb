@@ -1,0 +1,52 @@
+<div>
+   <div class="subnav">
+    <div class="container" id="container">
+      <ul class="subnav-list" id="slist">
+
+        <li title="Manage your domains" rel="tooltip" class="active">
+          <%=link_to "Domains" , manage_domains_path ,id:"black"%>
+
+        </li>
+        <li title="Manage your contacts" rel="tooltip">
+          <%=link_to "Contacts" , contacts_path,id:"grey" %>
+
+        </li>
+        <li title="Manage custom DNS templates" rel="tooltip"  ><%=link_to "Templates" , templates_path ,id:"grey" %>
+          
+        </li>
+
+      </ul>
+    </div>
+  </div>
+
+  <div class='registerdomainpage'>
+    <p class="rp">Use domain services</p>
+
+    <%=content_tag :div do %>
+      <p class="name">Before you start</p>
+      <p class="icon-warning"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>To use our DNS service, you'll have to <a target="_blank" href="https://support.dnsimple.com/articles/delegating-dnsimple-hosted">update your current name servers at your registrar</a>.</p>
+      <%=form_for(@hosting, :url=> url_for(:controller => 'domains/hostings', :action => 'create'), html: { method: :post }) do |form| %>
+      <%= form.text_field :domain_name %>
+       
+
+        
+        
+        <div class="b1b2">
+        
+          
+          <%=form.submit "Use domain services" ,:id=>"continue1"%>
+        
+  
+        <% end %>
+      
+            
+           
+            <%= button_to 'Cancel' ,manage_domains_path, method: :get , :id=>"cancl"%>
+         
+        
+          </div>
+    <% end %>
+    
+  </div>
+</div>
+

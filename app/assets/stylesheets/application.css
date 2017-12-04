@@ -1,0 +1,35 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+/* This file is only for importing other files */
+@import "base.scss"
+@import "domains.scss"
+@import "options.scss"
+@import "registers.scss"
+@import "records.scss"
+@import "domain_records.scss"
+@import "dns.scss"
+@import "dnssecs.scss"
+@import "email_forwardings.scss"
+@import "manage_domains.scss"
+@import "options.scss"
+@import "serrvicedomains.scss"
+@import "settings.scss"
+@import "ssl_certificates.scss"
+@import "templates.scss"
+@import "transferdomains.scss"
+
+
